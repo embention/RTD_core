@@ -15,7 +15,7 @@ def main():
     file_conf_out = open(conf_path, "w", encoding="utf-8")
     for line in file_conf_in:
         if line.find("# ***___set_copyright___***") != -1:
-            file_conf_out.write("copyright= u'" + year + ", "+author+"\n")
+            file_conf_out.write("copyright= u'" + year + ", "+author+"'\n")
         elif line.find("# ***___set_author___***") != -1:
             file_conf_out.write(
                 "author = "+author+"\n")
