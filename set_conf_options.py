@@ -18,7 +18,7 @@ def main():
             file_conf_out.write("copyright= u'" + year + ", "+author+"'\n")
         elif line.find("# ***___set_author___***") != -1:
             file_conf_out.write(
-                "author = "+author+"\n")
+                "author = '"+author+"'\n")
         else:
             file_conf_out.write(line)
     file_conf_out.close()
