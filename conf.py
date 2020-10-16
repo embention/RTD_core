@@ -15,7 +15,6 @@
 import sys
 import os
 import json
-from datetime import datetime
 
 
 def codif_correction_cmd_linux(x):
@@ -75,8 +74,8 @@ if dir_conf_path[-2][:7] == "RTD_UM-":
     project = dir_conf_path[-2].replace("RTD_UM-","")
 else:
     project = dir_conf_path[-2].replace("RTD-","")
-copyright = str(datetime.now().strftime('%Y'))+u', Embention'
-author = "Embention"
+# ***___set_copyright___***
+# ***___set_author___***
 language = dir_conf_path[-1]
 
 # The version info for the project you're documenting, acts as replacement for
