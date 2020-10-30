@@ -5,13 +5,13 @@ from datetime import datetime
 
 def get_project_title(path_index):
     with open(os.path.join(path_index,"index.rst"), "r", encoding="utf-8") as index_file:
+        title_search=False
         for line in index_file.readlines():
-            if ".." != line[0:2] and "#######" not in line and not line.isspace() and "=======" not in line and ":" not in line:
+            if "#######" in line:
+                title_search = not title_search
+            elif title_search and not line.isspace():
                 title = ' '.join(line.replace("\n","").replace("\t","").split())
-                if len(title) < 80:
-                    return title
-                else:
-                    return ""
+                return title
     return ""
 
 
