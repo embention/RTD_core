@@ -25,9 +25,6 @@ def codif_correction_cmd_linux(x):
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-# Get project settings
-dir_conf_path = os.path.dirname(os.path.realpath(__file__)).split(os.sep)
-
 # sys.path cambiado para poder importar librerias propias del repo
 sys.path.insert(0, os.path.abspath('./'))
 from libs import autodiscover_code
@@ -70,13 +67,10 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-if dir_conf_path[-2][:7] == "RTD_UM-":
-    project = dir_conf_path[-2].replace("RTD_UM-","")
-else:
-    project = dir_conf_path[-2].replace("RTD-","")
+# ***___set_project___***
 # ***___set_copyright___***
 # ***___set_author___***
-language = dir_conf_path[-1]
+# ***___set_language___***
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
