@@ -226,7 +226,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', project+'.tex', codif_correction_cmd_linux(project),
+  ('index', 'Manual.tex', codif_correction_cmd_linux(project),
    author, 'manual'),
 ]
 

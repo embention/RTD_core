@@ -5,9 +5,12 @@ from datetime import datetime
 
 def get_project_title(path_index):
     with open(os.path.join(path_index,"index.rst"), "r", encoding="utf-8") as index_file:
+        previous_line = ""
         for line in index_file.readlines():
-            if ".." != line[0:2] and "#######" not in line and not line.isspace() and "=======" not in line:
-                return ' '.join(line.replace("\n","").replace("\t","").split())
+            if "****" in line or "####" in line or "====" in line:
+                if ".." not in previous_line[0:2] and not previous_line[0:1].isspace() and "####" not in previous_line and "****" not in previous_line and not previous_line.isspace() and "====" not in previous_line and previous_line:
+                    return ' '.join(previous_line.replace("\n","").replace("\t","").split())
+            previous_line = line
     return ""
 
 
