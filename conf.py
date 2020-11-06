@@ -212,6 +212,7 @@ htmlhelp_basename = 'NmandManualsDoc'
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
+  'figure_align': 'H'
 # The paper size ('letterpaper' or 'a4paper').
 #'papersize': 'letterpaper',
 
