@@ -1,0 +1,118 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+task clone_rtd_files(type:Exec){
+    workingDir "${rootProject.rootDir}"
+    commandLine 'git','clone','--depth=1','https://github.com/embention/RTD_core.git','repo_rtd_temp'
+}
+
+task install_rtd_evn(type:Exec){
+    dependsOn clone_rtd_files
+    workingDir "${rootProject.rootDir}"
+    commandLine 'pip','install','-r','repo_rtd_temp/requirements.txt'
+}
+
+task install_press_theme(type:Exec){
+    workingDir "${rootProject.rootDir}"
+	println "${rootProject.rootDir}"
+    commandLine 'pip','install','repo_rtd_temp/sphinx_press_theme-master'
+}
+
+task set_conf_options(type:Exec){
+    File testFile = new File("${rootProject.rootDir}/repo_rtd_temp");
+    if ( !testFile.exists() ) {
+      dependsOn install_rtd_evn
+    }
+	dependsOn install_press_theme
+    workingDir "${rootProject.rootDir}"
+    commandLine 'python','repo_rtd_temp/set_conf_options.py','--author','Embention', '--project_path', projectDir
+}
+
+task copy_rtd_libs(type: Copy) {
+    dependsOn set_conf_options
+    from file("${rootProject.rootDir}/repo_rtd_temp/libs/")
+    into file("${projectDir}/libs")
+}
+
+task rtd_html(type:Exec){
+  dependsOn copy_rtd_libs
+  println "${projectDir}"
+  String version_='latest'
+  if (project.hasProperty('version_rtd') && project.version_rtd!='unspecified'){
+      println version_rtd
+      version_=project.version_rtd
+  }
+  commandLine "sphinx-build",'-T','-b','html', '-q', '-d', '_build/doctrees-readthedocs','-D', 'version='+version_,'.','_build/html'
+}
+
+task rtd_latex(type:Exec){
+  dependsOn copy_rtd_libs
+  println "${projectDir}"
+  String version_='latest'
+  if (project.hasProperty('version_rtd') && project.version_rtd!='unspecified'){
+      println version_rtd
+      version_=project.version_rtd
+  }
+  commandLine "sphinx-build",'-b','latex', '-q', '-d', '_build/doctrees-readthedocs', '-D','language='+project.name , '-D', 'version='+version_,'.','_build/latex'
+}
+
+
+task rtd_epub(type:Exec){
+  dependsOn copy_rtd_libs
+  println "${projectDir}"
+  String version_='latest'
+  if (project.hasProperty('version_rtd') && project.version_rtd!='unspecified'){
+      println version_rtd
+      version_=project.version_rtd
+  }
+  commandLine "sphinx-build",'-b','epub', '-q', '-d', '_build/doctrees-readthedocs', '-D', 'version='+version_,'.','_build/epub'
+}
+
+task clean_pdf_build(type:Delete) {
+    delete '_build/latex/pdf_output'
+}
+
+task rtd_pdf(type:Exec){
+  workingDir '_build/latex/'
+  String output_name=project.parent.name+"-"+project.name
+  if (!project.hasProperty('ignore_latex_build')){
+      dependsOn rtd_latex
+  }
+  if (project.hasProperty('jobname') && project.jobname!='unspecified'){
+      println jobname
+      output_name=project.jobname
+  }
+  commandLine 'latexmk','-r','latexmkrc','-pdf','-f','-dvi-','-ps-','-output-directory=pdf_output','-jobname='+output_name,'-interaction=nonstopmode'
+}
+
+task clean_conf(type:Delete) {
+    delete 'conf.py',
+    'libs',
+	'_static'
+}
+
+task clean_builds(type:Delete) {
+    delete '_build'
+}
+
+task rtd_html_build {
+    dependsOn rtd_html
+    rtd_html.finalizedBy('clean_conf')
+}
+
+task rtd_latex_build {
+    dependsOn rtd_latex
+    rtd_latex.finalizedBy('clean_conf')
+}
+
+task rtd_epub_build {
+    dependsOn rtd_epub
+    rtd_epub.finalizedBy('clean_conf')
+}
+
+task rtd_pdf_build {
+    dependsOn clean_pdf_build
+    dependsOn rtd_pdf
+    rtd_pdf.finalizedBy('clean_conf')
+    tasks.findByName('rtd_pdf').mustRunAfter 'clean_pdf_build'
+}
+

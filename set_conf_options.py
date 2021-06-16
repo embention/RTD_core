@@ -1,7 +1,7 @@
 import argparse
 import os
-import shutil
 from datetime import datetime
+import shutil
 
 
 def get_project_title(path_index):
