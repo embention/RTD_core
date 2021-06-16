@@ -1,8 +1,5 @@
 from setuptools import setup
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
-
 setup(
     name="sphinx_press_theme",
     version="0.7.3",
@@ -10,7 +7,7 @@ setup(
     license="MIT",
     author="Eduardo Naufel Schettino <schetino72>",
     description="A Sphinx-doc theme based on Vuepress",
-    long_description=long_description,
+    long_description="",
     long_description_content_type="text/markdown",
     packages=["sphinx_press_theme"],
     package_data={
