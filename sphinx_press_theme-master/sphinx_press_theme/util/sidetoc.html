@@ -1,0 +1,16 @@
+<div class="sidebar-links" role="navigation" aria-label="main navigation">
+    {% block menu %}
+    {% set global_toc = toctree(
+    maxdepth=-1,
+    collapse=True,
+    includehidden=True,
+    titles_only=False
+    ) %}
+    {% if global_toc %}
+    {{ global_toc }}
+    {% else %}
+    <div class="local-toc">{{ toc }}</div>
+    {% endif %}
+    {% endblock %}
+
+</div>
