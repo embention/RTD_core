@@ -30,7 +30,7 @@ task set_conf_options(type:Exec){
 task copy_rtd_logo(type: Copy) {
     dependsOn set_conf_options
     from file("${rootProject.rootDir}/repo_rtd_temp/logo.png")
-    into file("${projectDir}/logo.png")
+    into file("${projectDir}")
 }
 
 task copy_rtd_libs(type: Copy) {
