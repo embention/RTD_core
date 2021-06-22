@@ -27,8 +27,14 @@ task set_conf_options(type:Exec){
     commandLine 'python','repo_rtd_temp/set_conf_options.py','--author','Embention', '--project_path', projectDir
 }
 
-task copy_rtd_libs(type: Copy) {
+task copy_rtd_logo(type: Copy) {
     dependsOn set_conf_options
+    from file("${rootProject.rootDir}/repo_rtd_temp/logo.png")
+    into file("${projectDir}/logo.png")
+}
+
+task copy_rtd_libs(type: Copy) {
+    dependsOn copy_rtd_logo
     from file("${rootProject.rootDir}/repo_rtd_temp/libs/")
     into file("${projectDir}/libs")
 }
@@ -87,7 +93,8 @@ task rtd_pdf(type:Exec){
 task clean_conf(type:Delete) {
     delete 'conf.py',
     'libs',
-	'_static'
+	'_static',
+	'logo.png'
 }
 
 task clean_builds(type:Delete) {
