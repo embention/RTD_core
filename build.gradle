@@ -6,23 +6,23 @@ task clone_rtd_files(type:Exec){
 }
 
 task install_rtd_evn(type:Exec){
-    dependsOn clone_rtd_files
+    File testFile = new File("${rootProject.rootDir}/repo_rtd_temp");
+    if ( !testFile.exists() ) {
+      dependsOn clone_rtd_files
+    }
     workingDir "${rootProject.rootDir}"
     commandLine 'pip','install','-r','repo_rtd_temp/requirements.txt'
 }
 
 task install_press_theme(type:Exec){
+    dependsOn install_rtd_evn
     workingDir "${rootProject.rootDir}"
 	println "${rootProject.rootDir}"
     commandLine 'pip','install','repo_rtd_temp/sphinx_press_custom'
 }
 
 task set_conf_options(type:Exec){
-    File testFile = new File("${rootProject.rootDir}/repo_rtd_temp");
-    if ( !testFile.exists() ) {
-      dependsOn install_rtd_evn
-    }
-	dependsOn install_press_theme
+    dependsOn install_press_theme
     workingDir "${rootProject.rootDir}"
     commandLine 'python','repo_rtd_temp/set_conf_options.py','--author','Embention', '--project_path', projectDir
 }
