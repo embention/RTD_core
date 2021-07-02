@@ -128,7 +128,6 @@ pygments_style = 'sphinx'
 #html_theme = 'karma_sphinx_theme'
 html_theme = 'press'
 html_theme_options = {
-    'logo_only': True,
 }
 
 
@@ -168,7 +167,7 @@ html_css_files = ['custom_style.css', 'custom.css']
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
-html_extra_path = ["search.svg"]
+html_extra_path = ["_static/search.svg"]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
