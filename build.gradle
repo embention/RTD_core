@@ -90,6 +90,7 @@ task clean_pdf_build(type:Delete) {
 }
 
 task rtd_pdf(type:Exec){
+  println "INFO: CORRECT RTD_CORE FOR REVIEW"
   workingDir '_build/latex/'
   String output_name=project.parent.name+"-"+project.name
   if (!project.hasProperty('ignore_latex_build')){
