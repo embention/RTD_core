@@ -47,7 +47,7 @@ task rtd_html(type:Exec){
       println version_rtd
       version_=project.version_rtd
   }
-  commandLine "sphinx-build",'-T','-b','html', '-q', '-d', '_build/doctrees-readthedocs','-D', 'version='+version_,'.','_build/html'
+  commandLine "sphinx-build",'-T','-b','html', '-q', '-d', '_build/doctrees-readthedocs','-D', 'version=' + version_, '.', '_build/html'
 }
 
 task rtd_latex(type:Exec){
@@ -58,7 +58,13 @@ task rtd_latex(type:Exec){
       println version_rtd
       version_=project.version_rtd
   }
-  commandLine "sphinx-build",'-b','latex', '-q', '-d', '_build/doctrees-readthedocs', '-D','language='+project.name , '-D', 'version='+version_,'.','_build/latex'
+
+  if (project.hasProperty('today_rtd') && project.today_rtd != 'unspecified') {
+    println project.today_rtd
+    commandLine "sphinx-build",'-b','latex', '-q', '-d', '_build/doctrees-readthedocs', '-D','language=' + project.name , '-D', 'version=' + version_, '-D', 'release=' + version_, '-D', 'today=' + project.today_rtd, '.', '_build/latex'
+  } else {
+    commandLine "sphinx-build",'-b','latex', '-q', '-d', '_build/doctrees-readthedocs', '-D','language=' + project.name , '-D', 'version=' + version_, '-D', 'release=' + version_, '.', '_build/latex'
+  }
 }
 
 
@@ -70,7 +76,13 @@ task rtd_epub(type:Exec){
       println version_rtd
       version_=project.version_rtd
   }
-  commandLine "sphinx-build",'-b','epub', '-q', '-d', '_build/doctrees-readthedocs', '-D', 'version='+version_,'.','_build/epub'
+
+  if (project.hasProperty('today_rtd') && project.today_rtd != 'unspecified') {
+    println project.today_rtd
+    commandLine "sphinx-build",'-b','epub', '-q', '-d', '_build/doctrees-readthedocs', '-D', 'version=' + version_, '-D', 'release=' + version_, '-D', 'today=' + project.today_rtd, '.', '_build/epub'
+  } else {
+    commandLine "sphinx-build",'-b','epub', '-q', '-d', '_build/doctrees-readthedocs', '-D', 'version=' + version_, '-D', 'release=' + version_, '.','_build/epub'
+  }
 }
 
 task clean_pdf_build(type:Delete) {
