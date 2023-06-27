@@ -151,11 +151,11 @@ html_theme_options = {
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 project_path = pathlib.Path(__file__).parent.resolve()
+print(project_path)
 if project_path[-2][:7] == "RTD_UM-":
     html_logo = "logo.png"
 else:
     html_logo = "logo-documentation.png"
-html_logo = "logo.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
