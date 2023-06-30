@@ -29,7 +29,7 @@ task set_conf_options(type:Exec){
 
 task copy_rtd_logo(type: Copy) {
     dependsOn set_conf_options
-    if("${projectDir.parent.startsWith("RTD-UM")}"){
+    if("${projectDir.parent.contains("RTD-UM")}"){
         from file("${rootProject.rootDir}/repo_rtd_temp/logo.png")
     }else{
         from file("${rootProject.rootDir}/repo_rtd_temp/logo-documentation.png")
@@ -107,7 +107,7 @@ task rtd_pdf(type:Exec){
 }
 
 task clean_conf(type:Delete) {
-    if("${projectDir.name.startsWith("RTD-UM")}"){
+    if("${projectDir.parent.contains("RTD-UM")}"){
         delete 'conf.py',
         'libs',
         '_static',
