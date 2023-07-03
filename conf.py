@@ -152,7 +152,7 @@ html_theme_options = {
 # of the sidebar.
 project_path = pathlib.Path(__file__).parent.parent.resolve()
 project_path_string = project_path.name
-if project_path_string.__contains__("RTD-UM") or project_path_string.__contains__("RTD_UM"):
+if "RTD-UM" in project_path_string or "RTD_UM" in project_path_string:
     html_logo = "logo.png"
 else:
     html_logo = "logo-documentation.png"
