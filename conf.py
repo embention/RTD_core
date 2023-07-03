@@ -11,7 +11,7 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
-
+import pathlib
 import sys
 import os
 import json
@@ -150,7 +150,12 @@ html_theme_options = {
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "logo.png"
+project_path = pathlib.Path(__file__).parent.parent.resolve()
+project_path_string = project_path.name
+if "RTD-UM" in project_path_string or "RTD_UM" in project_path_string:
+    html_logo = "logo.png"
+else:
+    html_logo = "logo-documentation.png"
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
