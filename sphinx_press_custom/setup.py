@@ -20,7 +20,7 @@ setup(
         ]
     },
     entry_points={"sphinx.html_themes": ["press = sphinx_press_theme"]},
-    install_requires=["sphinx==4.0.0"], # last tested with 4.0.0 & docutils 0.17
+    install_requires=["sphinx==4.0.1"], # last tested with 4.0.0 & docutils 0.17
     classifiers=[
         "Framework :: Sphinx",
         "Framework :: Sphinx :: Theme",
