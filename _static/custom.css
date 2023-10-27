@@ -135,7 +135,6 @@ p.sidebar-title {
     font-weight: 700
 }
 
-blockquote,
 div.admonition,
 div.topic {
     clear: left
@@ -317,13 +316,9 @@ samp {
     }
 }
 
-blockquote {
-    font-size: inherit
-}
 
-blockquote h2 {
-    margin-left: 1em
-}
+
+
 
 .sig .property {
     color: #4d6a86;
@@ -866,15 +861,7 @@ kbd {
     padding: 0 .15em
 }
 
-blockquote {
-    font-size: 1rem;
-    margin: 1rem 0;
-    padding: .25rem 0 .25rem 1rem
-}
 
-blockquote>p {
-    margin: 0
-}
 
 ol,
 ul {
@@ -1225,7 +1212,6 @@ p.sidebar-title {
     font-weight: 700
 }
 
-blockquote,
 div.admonition,
 div.topic {
     clear: left
@@ -1407,13 +1393,7 @@ samp {
     }
 }
 
-blockquote {
-    font-size: inherit
-}
 
-blockquote h2 {
-    margin-left: 1em
-}
 
 .sig .property {
     color: #4d6a86;
@@ -1698,7 +1678,7 @@ p.sidebar-title {
     font-weight: 700
 }
 
-blockquote,
+
 div.admonition,
 div.topic {
     clear: left
@@ -1880,13 +1860,6 @@ samp {
     }
 }
 
-blockquote {
-    font-size: inherit
-}
-
-blockquote h2 {
-    margin-left: 1em
-}
 
 .sig .property {
     color: #4d6a86;
