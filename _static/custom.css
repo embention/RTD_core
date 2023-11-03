@@ -2298,13 +2298,21 @@ img.align-default {
 }
 
 .vp-sidebar .toctree-l4 a {
-    padding: 0.25rem 1rem 0.25rem 3.75rem;
+    padding: 0.25rem 1rem 0.25rem 3.25rem;
     font-weight: 450;
+    font-size: 0.9rem;
 }
 
 .vp-sidebar .toctree-l5 a {
+    padding: 0.25rem 1rem 0.25rem 4.00rem;
+    font-weight: 450;
+    font-size: 0.9rem;
+}
+
+.vp-sidebar .toctree-l6 a {
     padding: 0.25rem 1rem 0.25rem 4.75rem;
     font-weight: 450;
+    font-size: 0.9rem;
 }
 
 
@@ -2322,7 +2330,8 @@ img.align-default {
 .vp-sidebar .toctree-l2 a.current,
 .vp-sidebar .toctree-l3 a.current,
 .vp-sidebar .toctree-l4 a.current,
-.vp-sidebar .toctree-l5 a.current {
+.vp-sidebar .toctree-l5 a.current,
+.vp-sidebar .toctree-l6 a.current {
     color: #0073b4;
 }
 
