@@ -26,7 +26,7 @@ task install_press_theme(type:Exec){
 task set_conf_options(type:Exec){
     dependsOn install_press_theme
     workingDir "${rootProject.rootDir}"
-    commandLine 'python','repo_rtd_temp/set_conf_options.py','--author','Embention', '--project_path', projectDir
+    commandLine 'python3','repo_rtd_temp/set_conf_options.py','--author','Embention', '--project_path', projectDir
 }
 
 task copy_rtd_logo(type: Copy) {
