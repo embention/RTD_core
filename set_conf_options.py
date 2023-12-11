@@ -25,7 +25,10 @@ def main():
     conf_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "conf.py")
     static_path_src = os.path.join(os.path.dirname(os.path.abspath(__file__)), "_static")
     static_path_dst = os.path.join(project_path, "_static")
-    shutil.copytree(static_path_src, static_path_dst)
+    try:
+        shutil.copytree(static_path_src, static_path_dst)
+    except Exception as e:
+        print(str(e))
     year = str(datetime.now().strftime('%Y'))
 
     # Get project settings
