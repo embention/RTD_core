@@ -1650,6 +1650,11 @@ table p {
     opacity: 1;
 }
 
+div.sidebar-links * > a:hover::before {
+    content: "" !important;
+    opacity: 0 !important;
+}
+
 /* Estilo predeterminado para el enlace externo*/
 a[href*="manuals.embention.com/"].reference.external {
     position: relative;
