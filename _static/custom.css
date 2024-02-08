@@ -198,10 +198,19 @@ pre {
     border-color: #42b983
 }
 
-.admonition.important,
 .admonition.note {
     background-color: #e5f1fb;
     border-color: #5faaea
+}
+
+.admonition.important {
+    background-color: rgba(200, 191, 231, 0.3);
+    border-color: rgba(163, 73, 164);
+    color: rgba(95, 41, 95);
+}
+
+.admonition.important .custom-block-title {
+    color: rgba(95, 41, 95)
 }
 
 .admonition.caution,
@@ -1290,10 +1299,19 @@ pre {
     border-color: #42b983
 }
 
-.admonition.important,
 .admonition.note {
     background-color: #e5f1fb;
     border-color: #5faaea
+}
+
+.admonition.important {
+    background-color: rgba(200, 191, 231, 0.3);
+    border-color: rgba(163, 73, 164);
+    color: rgba(95, 41, 95);
+}
+
+.admonition.important .custom-block-title {
+    color: rgba(95, 41, 95)
 }
 
 .admonition.caution,
@@ -1602,6 +1620,71 @@ table p {
 .content .reference {
     scroll-margin-top: 3.6rem
 }
+/* Estilo predeterminado para el enlace interno*/
+*:not(.toctree-l1):not(.toctree-l2):not(.toctree-l3):not(.toctree-l4):not(.toctree-l5):not(.toctree-l6) > a.reference.internal:not(.image-reference) {
+    position: relative;
+}
+
+/* Tooltip solo para el enlace interno*/
+
+*:not(.toctree-l1):not(.toctree-l2):not(.toctree-l3):not(.toctree-l4):not(.toctree-l5):not(.toctree-l6) > a.reference.internal:not(.image-reference):hover::before {
+    min-width: 150px;
+    font-size: 0.8em;
+    content: "Check the indicated section";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    background-color: #e2e8ecb2;
+    color: #0068c4;
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+
+
+*:not(.toctree-l1):not(.toctree-l2):not(.toctree-l3):not(.toctree-l4):not(.toctree-l5):not(.toctree-l6) > a.reference.internal:not(.image-reference):hover::before {
+    visibility: visible;
+    opacity: 1;
+}
+
+div.sidebar-links * > a:hover::before {
+    content: "" !important;
+    opacity: 0 !important;
+}
+
+/* Estilo predeterminado para el enlace externo*/
+a[href*="manuals.embention.com/"].reference.external {
+    position: relative;
+}
+
+/* Tooltip solo para el enlace externo con ambas clases */
+
+a[href*="manuals.embention.com/"].reference.external:hover::before {
+    min-width: 150px;
+    font-size: 0.8em;
+    content: "Check the manual version";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    background-color: rgba(255, 229, 100, 0.658);
+    color: #6b5900;
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+  }
+
+
+a[href*="manuals.embention.com/"].reference.external:hover::before {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 .content a:focus {
     outline: 0
@@ -1763,10 +1846,19 @@ pre {
     border-color: #42b983
 }
 
-.admonition.important,
 .admonition.note {
     background-color: #e5f1fb;
     border-color: #5faaea
+}
+
+.admonition.important {
+    background-color: rgba(200, 191, 231, 0.3);
+    border-color: rgba(163, 73, 164);
+    color: rgba(95, 41, 95);
+}
+
+.admonition.important .custom-block-title {
+    color: rgba(95, 41, 95)
 }
 
 .admonition.caution,
@@ -2469,5 +2561,3 @@ img.align-default {
         text-align: left
     }
 }
-
-
