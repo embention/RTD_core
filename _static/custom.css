@@ -1650,9 +1650,8 @@ table p {
     opacity: 1;
 }
 
-div.sidebar-links * > a:hover::before {
-    content: "" !important;
-    opacity: 0 !important;
+div.sidebar-links * > a:hover::before, a:has(img):hover::before, a.download:hover::before {
+    display: none;
 }
 
 /* Estilo predeterminado para el enlace externo*/
