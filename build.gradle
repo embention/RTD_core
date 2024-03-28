@@ -2,7 +2,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 
 task clone_rtd_files(type:Exec){
     workingDir "${rootProject.rootDir}"
-    commandLine 'git','clone','--depth=1','https://github.com/embention/RTD_core.git','repo_rtd_temp'
+    commandLine 'git','clone', 'feature/598_change_url_server_in_notifications_jrc4_dev', '--depth=1','https://github.com/embention/RTD_core.git','repo_rtd_temp'
 }
 
 task install_rtd_evn(type:Exec){
